@@ -35,20 +35,27 @@ export default class App extends Component {
   }
 }
 
-function PrivateRoute({children}){
-  useAuth();
-  var auth = this.state.isLoggedIn;
-  return auth ? children : <Navigate to="/login"/>
-}
+// function useAutht(){
+//   return React.useContext(AuthContext);
+// }
 
-function useAuth(){
-  const token = localStorage.getItem('auth_token');
-  axios.get(API_URL+'member-data', {
-    headers: {'Authorization': `Bearer ${token}`}
-  }).then((resp)=>{
-    var local_user = JSON.parse(localStorage.getItem('user'));
-    if(resp.statusText === 'OK' && local_user.id === resp.data.user.id){
-      this.setState({isLoggedIn: true});
-    }
-  });
-}
+// function AuthStatus(){
+
+// }
+
+// function PrivateRoute({children}){
+//   useAuth();
+//   return auth ? children : <Navigate to="/login"/>
+// }
+
+// function useAuth(){
+//   const token = localStorage.getItem('auth_token');
+//   axios.get(API_URL+'member-data', {
+//     headers: {'Authorization': `Bearer ${token}`}
+//   }).then((resp)=>{
+//     var local_user = JSON.parse(localStorage.getItem('user'));
+//     if(resp.statusText === 'OK' && local_user.id === resp.data.user.id){
+//       this.setState({isLoggedIn: true});
+//     }
+//   });
+// }
